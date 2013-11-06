@@ -9,6 +9,6 @@ from MainPage import main
 #//================================================================================================
 
 app = webapp2.WSGIApplication([('/',login.LoginUser),
-                                ('/render/(.*)/(.*)',asyncUpdate.RenderDynamic),
-                                ('/portfolio/(.*)', main.MainPage),
-                                ('/renderUserStocksDB',SavedUserStocks.getUserStocks)], debug=True)
+                                ('/render/(.*)/(.*)',asyncUpdate.RenderDynamic), # Buy stocks here.
+                                ('/portfolio/(.*)', main.MainPage), # Render the main page.
+                                ('/renderUserStocksDB',SavedUserStocks.getUserStocks)], debug=True) # Render the users stocks when they log in.
