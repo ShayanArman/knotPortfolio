@@ -1,0 +1,39 @@
+How will stocks work?
+
+Basically, 
+
+# Search for a stock, get the object from the database, and make a json object out of it.
+# Read the dictionary with a .get(key,None) call, if it is none, then just hit ystockquote.
+# If it is in there, then get the price and the time and date it was added.
+
+# Get todays date as a string by calling timeHelp.dateStringForDay, if that date string is equal to the date on the object,
+# Then get the time string
+
+
+
+I want a stock price. What Do I Do to get it?
+
+price = stockHelper.getPrice
+					-----> Goes through the entire cached stocks in the stocks DB.
+					if (A OK):
+						then price = cached stock price
+					else:
+						|
+						|
+						|--------> Hit yahoos servers.
+						if (A OK):
+							then price = yahoo stock price
+						else:
+							|
+							|
+							|
+							|-----> then price = zero. Try again.
+
+
+
+
+
+
+
+
+
