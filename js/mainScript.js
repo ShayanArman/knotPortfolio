@@ -1,4 +1,4 @@
-var doneRequest = 0;
+var doneRequest = 0; // Semaphore.
 $(document).ready(function() {
 	$("#jsonContainer").load("/renderUserStocksDB", function() {
 			var jstring = $("#jsonContainer").html();
