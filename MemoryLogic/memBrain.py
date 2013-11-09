@@ -26,6 +26,21 @@ def updateUserStocks(json):
 
 # RETURNS TRUE IF NOT EQUAL TO ZERO. DO NOT PUT NEGATIVE NUM IN THE DB	
 # Set the current users cash in memory
+def updateCashInMemcacheAndDBAfterSell(cashToAddInteger):
+	# First get the current users amount of cash in the memory
+	cashString = mem_cache.getCashFromMemcache()
+	# Subtract it by how much they just spent
+	newCashFloat = float(cashString)+cashToAddInteger
+	newCashStr = str(newCashFloat);
+	# Set that in the memcache
+	mem_cache.setCashInMemcache(newCashStr)
+	# Set that in the DB.
+	UserDB.updateUserCash(currentUser(),newCashStr)
+	# Set that in the DB.
+	helper.wait(.1)
+
+# RETURNS TRUE IF NOT EQUAL TO ZERO. DO NOT PUT NEGATIVE NUM IN THE DB	
+# Set the current users cash in memory
 def updateCashInMemcacheAndDBAfterTransaction(cashToSubtractInteger):
 	# First get the current users amount of cash in the memory
 	cashString = mem_cache.getCashFromMemcache()

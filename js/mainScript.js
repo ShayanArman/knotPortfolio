@@ -22,11 +22,12 @@ $(document).ready(function() {
 	});
 	
 	$("#addStockButton").click(function() {
+		$('#addStockButton').attr('disabled', 'disabled');
 		var ticker = $("#tickerInput").val();
 		var numberOfShares = $("#numberOfSharesInput").val();
-		if(doneRequest == 0) {
+		
 			$("#ajaxValue").load("/render/"+ticker.toUpperCase()+"/"+numberOfShares, function() {
-				doneRequest = 1;
+
 				loadedValues = $("#ajaxValue").html();
 				var response = String(loadedValues);
 	
@@ -57,8 +58,9 @@ $(document).ready(function() {
 	
 						doneRequest = 0;
 					}
+					$('#addStockButton').removeAttr('disabled');
 				});
-		}
+		
 	
 	});
 
