@@ -10,11 +10,9 @@ CASH_MEMCACHE_KEY = "cash"
 # =============================================================
 
 def initiateSellingSequenceScotty(tick,shares):
-	print "SHAYAN SHAYAN SHAYAN SHAYAN"
-	print "TICK " + tick
-	print "Shares" + str(shares)
 	numberOfSharesForStock = 0
 	userStocksString = str(memBrain.userStocks())
+	tick = tick.upper()
 	if(userStocksString != 'noStocksBoughtYet'): # If there are stocks, then get the object and add this stock to it.
 		jsonMemoryOb = helper.getJsonObjectFromMemoryString(userStocksString)
 		for ob in jsonMemoryOb:

@@ -76,7 +76,7 @@ def currentUser():
 
 # Return the users cash.
 def userCash():
-	return mem_cashe.getCashFromMemcache()
+	return mem_cache.getCashFromMemcache()
 
 #====== // Set stocks in Memcache \\ ========#
 def setStocksInMemcache():

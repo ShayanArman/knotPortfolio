@@ -1,5 +1,7 @@
 from RenderModule import handle
+from MemoryLogic import memBrain
 
 class MainPage(handle.Handler):
     def get(self,name):
-        self.render("MainStockPage.html")
+    	cash = memBrain.userCash()
+        self.render("MainStockPage.html",cash=cash)
