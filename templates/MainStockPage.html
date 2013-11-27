@@ -1,60 +1,52 @@
 <html>
-<head>
-	<link href="/css/main.css" rel="stylesheet">
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script src="../js/mainScript.js"></script>
-</head>
-<body>
-	
-	<div class="mainPageTitle" style="font-size=33px">
-		<p>{{cash}}</p>
-	</div>
+	<head>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="../js/mainScript.js"></script>
+		<script src="../js/buyStocksHandler.js"></script>
+		<link rel="stylesheet" href="/css/table.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/fira.css">
+		<link rel="stylesheet" href="css/screen.css" media="screen" />
+		<link rel="stylesheet" href="/css/fonts/font-awesome/css/font-awesome.css">
+		<title>knotPortfolio</title>
+	</head>
+	<body>
+		<!-- Solstice sidebar -->
+			<div class="sidebar">
+				<div class="sidebar-app-container">
+					<div class="sidebar-app">
+							<a class="sideBarLink" id="portfolioButton" href="/"><i class="icon-book" style="font-size: 35px;"></i></a>
+							<p id="portfolioLinkName">Portfolio</p>
+					</div>
+					<div class="sidebar-app">
+							<a class="sideBarLink" id="buyStocksLink" href="/buystocks"><i class="icon-plus-sign" style="font-size: 35px;"></i></a>
+							<p>Buy</p>
+					</div>
+					<div class="sidebar-app">
+							<a class="sideBarLink" href="/sellstocks"><i class="icon-minus-sign" style="font-size: 35px;"></i></a>
+							<p>Sell</p>
+					</div>
+					<div class="sidebar-app">
+							<a class="sideBarLink" href="/data"><i class="icon-tasks" style="font-size: 35px;"></i></a>
+							<p>Data</p>
+					</div>
+					<div class="sidebar-app">
+							<a class="sideBarLink" href="/settings"><i class="icon-wrench" style="font-size: 35px;"></i></a>
+							<p>Settings</p>
+					</div>
+					<div class="sidebar-app">
+							<a class="sideBarLink" href="/logout"><i class="icon-signout" style="font-size: 35px;"></i></a>
+							<p>Sign Out</p>
+					</div>
+				</div>
+			</div>
 
-	<div class="portfolio">
-
-
-	<table id="rounded-corner" summary="2007 Major IT Companies' Profit">
-		<thead>
-			<tr>
-				<th scope="col" class="rounded-company">Company</th>
-				<th scope="col" class="rounded-q1">Bought At</th>
-				<th scope="col" class="rounded-q2">BookValue</th>
-				<th scope="col" class="rounded-q3">MarketValue</th>
-				<th scope="col" class="rounded-q4">Price</th>
- 			</tr>
-		</thead
-		<tfoot>
-			<tr>
-				<td colspan="4" class="rounded-foot-left">
-					Quote: <input id="tickerInput" type="text">
-					Shares: <input id="numberOfSharesInput" type="text">
-					 <button type="button" id="addStockButton">Add</button>
-				</td>
-
-				<td class="rounded-foot-right">&nbsp;</td>
-			</tr>
-		</tfoot>
-		<tbody id="tableBody">
-
-		</tbody>
-	</table>
-
-
-	<div>
-	</div>
-
-	<div id="ajaxValue">
-	</div>
-
-	<div id="jsonContainer">
-	
-	</div>
-
-	</div>
-
-
-</body>
-
+			<div id="container">
+				{% block content %}
+				
+				{% endblock %}
+			</div>
+	</body>
 </html>	
 
 

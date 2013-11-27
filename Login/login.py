@@ -4,22 +4,37 @@ from RenderModule import handle
 from MemoryLogic import memBrain
 from StockPricesDB import Stocks
 
-
+def isCorrectUser(dbPassword,password):
+    if(dbPassword == password):
+        return True
+    return False
 class LoginUser(handle.Handler):
     def get(self):
-        # Stocks.insertStockStringInDataBase("{'aapl': {'price': '188', 'time': '10-5-6'}}")
-        self.render("loginPage.html")
+        #Stocks.insertStockStringInDataBase("{'aapl': {'price': '188', 'time': '10-5-6', 'day':'10-5-2012'}}")
+        username = self.currentUser()
+        user = UserDB.getUserByName(str(username))
+        if user:
+            redir = '/portfolio/' + username
+            self.redirect(redir)
+        else:
+            self.render("loginPage.html")
     def post(self):
         username = self.request.get('username')
+        username = username.lower()
         password = self.request.get('password')
         self.write(username + "| " + password)
 
-        user = UserDB.getUserByName(username)
+        user = UserDB.getUserByName(username) # if user is in the database. either correct password or not.
+        # if correct password do this.
         if user:
-            redir = '/portfolio/' + username
-            memBrain.setExistingUserInMem(username,user.json,user.cash)
-            self.redirect(redir)
+            if isCorrectUser(user.password,password):
+                redir = '/portfolio/' + username
+                self.setCookie('username',str(username))
+                self.redirect(redir)
+            else:
+                self.redirect('/')
         else:
-            memBrain.setNewUserInMem(username,password,'noStocksBoughtYet','100000')
+            self.setCookie('username',str(username))
+            UserDB.insertNewUserInDataBase(username,password,'noStocksBoughtYet')
             redir = '/portfolio/' + username
             self.redirect(redir)		

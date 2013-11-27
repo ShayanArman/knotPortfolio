@@ -1,5 +1,6 @@
 from MemoryModule import mem_cache
 from DataStoreModule import UserDB
+from RenderModule import handle
 from HelperMethods import helper
 from StockPricesDB import Stocks
 
@@ -14,7 +15,6 @@ def setExistingUserInMem(name,json,cash):
 # Set New User In Memcache and Database
 def setNewUserInMem(name,password,json,cash):
 	UserDB.insertNewUserInDataBase(name,password,json)
-	mem_cache.setCashJsonAndName(name,json,cash)
 
 def updateUserName(name):
 	mem_cache.setMemcache(USER_MEMCACHE_KEY,name)

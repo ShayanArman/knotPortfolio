@@ -39,3 +39,12 @@ def updateUserCash(name,cash):
     user = getUserByName(name)
     user.cash = cash
     user.put()
+
+def updateUserCashAndJson(name,cash,data):
+    user = getUserByName(name)
+    user.json = data
+    user.cash = cash
+    user.put()
+
+def putUser(user):
+    user.put()

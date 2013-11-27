@@ -1,67 +1,40 @@
-var doneRequest = 0; // Semaphore.
 $(document).ready(function() {
-	$("#jsonContainer").load("/renderUserStocksDB", function() {
-			var jstring = $("#jsonContainer").html();
+	$("#portfolioLinkName").css("color","#8580F7");
+	// $("#portfolioButton").css("color","#8580F7");
+	//$(".sidebar-app p#portfolioLinkName").addClass("active")
+	$.getJSON("/renderUserStocksDB").complete(function(data) {
+			var jstring = data.responseText;
 			if(jstring != 'Empty') {
 				var jarray = JSON.parse(jstring);
+				var color = 'red';
 				for (var i=0;i<jarray.length;i++) { 
 					companyTicker = jarray[i].ticker;
 					numberShares  = jarray[i].numberOfShares;
-					currentPrice  = jarray[i].currentPrice;
+					currentPrice  = jarray	[i].currentPrice;
 					marketValue   = currentPrice*numberShares;
 					marketValue   = Math.round(marketValue * 100)/100;
 					originalPrice = jarray[i].boughtAt;
 					bookValue     = numberShares*originalPrice;
 					bookValue     = Math.round(bookValue * 100)/100;
-	
-					$('#tableBody').append("<tr><td>"+companyTicker+"</td><td>"+originalPrice+"</td><td>"+bookValue+"</td><td>"+marketValue+"</td><td>"+currentPrice+"</td></tr>");
+					if(currentPrice>originalPrice) {
+							color = '#008000';
+					} else {
+						color = 'red';
+					}
+					var tableRow = makeTableRows(companyTicker,marketValue,bookValue,originalPrice,currentPrice, color);
+					$('#tableBody').append(tableRow);
 				}
-			} else {
-				alert(jstring);
 			}
 	});
-	
-	$("#addStockButton").click(function() {
-		$('#addStockButton').attr('disabled', 'disabled');
-		var ticker = $("#tickerInput").val();
-		var numberOfShares = $("#numberOfSharesInput").val();
-		
-			$("#ajaxValue").load("/render/"+ticker.toUpperCase()+"/"+numberOfShares, function() {
 
-				loadedValues = $("#ajaxValue").html();
-				var response = String(loadedValues);
 	
-					if(response == 'Error') {
-						alert('There was an error, please try again');
-					} 
-					else if(response == 'NotEnoughCash') {
-						alert('Not enough cash available for transaction');
-						doneRequest = 0;
-					}
-					else {
-						doneRequest = 0;
-
-						ajaxValuesArray = loadedValues.split("~");
-		
-						numberOfShares = ajaxValuesArray[2];
-		
-						companyTicker = ajaxValuesArray[0];
-						currentPrice  = ajaxValuesArray[1];
-						marketValue   = currentPrice*numberOfShares;
-						marketValue   = Math.round(marketValue*100)/100;
-						originalPrice = currentPrice;
-						originalPrice = Math.round(originalPrice*100)/100;
-						bookValue     = numberOfShares*currentPrice;
-						bookValue     = Math.round(bookValue*100)/100;
-						
-						$('#tableBody').append("<tr><td>"+companyTicker+"</td><td>"+originalPrice+"</td><td>"+bookValue+"</td><td>"+marketValue+"</td><td>"+currentPrice+"</td></tr>");
-	
-						doneRequest = 0;
-					}
-					$('#addStockButton').removeAttr('disabled');
-				});
-		
-	
-	});
+	function makeTableRows(tick,marketVal,bookVal,originalPrice,currentPrice,color) {
+		var row = "<tr><td style=\"color:"+color+";font-weight:bold\">"+tick+"</td>"+
+							"<td>"+bookVal+"</td>"+
+							"<td style=\"color:"+color+";font-weight:bold\">"+marketVal+"</td>"+
+							"<td>"+originalPrice+"</td>"+
+							"<td style=\"color:"+color+";font-weight:bold\">"+currentPrice+"</td></tr>";
+		return row;
+	}
 
 });

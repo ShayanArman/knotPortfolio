@@ -1,0 +1,59 @@
+.mainPageTitle {
+	position: relative;
+	font-size:25px;
+	color: red;
+}
+
+#rounded-corner {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 0px;
+	width: 480px;
+	text-align: left;
+	border-collapse: collapse;
+}
+#rounded-corner thead th.rounded-company
+{
+	border-top-left-radius: 3px;
+}
+#rounded-corner thead th.rounded-q4
+{
+	border-top-right-radius: 3px;
+}
+#rounded-corner th
+{
+	padding: 8px;
+	font-weight: normal;
+	font-size: 13px;
+	color: white;
+	background: #222222;
+}
+#rounded-corner td
+{
+	padding: 8px;
+	background: rgba(0,0,0,.79);
+	border-top: 1px dashed white;
+	color: white;
+}
+
+#rounded-corner tfoot td.rounded-foot-left
+{
+	background: #121212;
+}
+#rounded-corner tfoot td.rounded-foot-right
+{
+	background: #121212;
+}
+#rounded-corner tbody tr:hover td
+{
+	background: rgba(0,0,0,1);
+}
+
+#ajaxValue 
+{
+	display: none;
+}
+#jsonContainer
+{
+	display: none;
+}

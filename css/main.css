@@ -1,128 +1,106 @@
-<style type="text/css"> 
-		body {
-			background-color: lightblue;
-		}
+/* Email styles */
 
-		.side-bar {
-			position: absolute;
-			left: 0px;
-			top: 0px;
-			float: left;
-			width: 10%;
-			background: lightblue;
-			height: 100%;
-			text-align: left;
-			text-align: center;
+body {
+	background-color: white;
+	font-family: FiraSansMedium;
+	color: grey;
+	margin-left: 100px;
+}
+#container{	
+	margin:0 auto;
+	background:#fff;
+	width:800px;
+	padding:20px 40px;
+	text-align:left;
+}
 
-		}
-		.link-container {
-			padding-top: 10px;
-			padding-right: 5px;
-			padding-left: 5px;
-			display: inline-block;
-		}
-		.link {
-			background-color: green;
-			display: inline-block;
-			text-align: center;
-			opacity:0.5;
-			filter:alpha(opacity=40);
-			padding: 20px 45px 20px 20px;
-			text-decoration: none;
-			border-radius: 15px;
-			color:white;
-		}
-		.link:hover{
-			background-color: red;
-		}
+.active {
+	color:blue;
+}
+/* Sidebar styles */
+.sidebar {
+	/*background-image: linear-gradient(#484e55, #3a3f44 60%, #313539);*/
+	/*background: #171718; */
+	font-family: FiraSansMedium;
+	background: #121212;
+	margin-left: -100px;
+	top: 0px;
+	left: 100px;
+	height: 100%;
+	width: 90px;
+	position: fixed;
+	overflow: hidden;
+	border-right: 1px solid darkgrey; 
+	color: white;
+}
 
-		.link:active{
-			background-color: black;
-		}
-		.contentContainer {
-			position: absolute;
-			top:0px;
-			width:90%;
-			right:0px;
-			height:100%;
-			background-color: white	;
-		}
-		.mainPageTitle {
-			position: relative;
-
-			font-size:25px;
-			color: red;
-		}
-
-		.portfolio {
-			position: absolute;
-			top:100px;
-			width:80%;
-			left:0px;
-			height:100%;
-			background-color: white;
-		}
-
-		.up {
-			color: green;
-		}
-
-		.down {
-			color: red;
-		}
-
-		#rounded-corner {
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+.sidebar-app-container {
 	font-size: 12px;
-	margin: 45px;
-	width: 480px;
-	text-align: left;
-	border-collapse: collapse;
-	}
-	#rounded-corner thead th.rounded-company
-	{
-		background: #b9c9fe url('table-images/left.png') left -1px no-repeat;
-	}
-	#rounded-corner thead th.rounded-q4
-	{
-		background: #b9c9fe url('table-images/right.png') right -1px no-repeat;
-	}
-	#rounded-corner th
-	{
-		padding: 8px;
-		font-weight: normal;
-		font-size: 13px;
-		color: #039;
-		background: #b9c9fe;
-	}
-	#rounded-corner td
-	{
-		padding: 8px;
-		background: #e8edff;
-		border-top: 1px solid #fff;
-		color: #669;
-	}
-	#rounded-corner tfoot td.rounded-foot-left
-	{
-		background: #e8edff url('table-images/botleft.png') left bottom no-repeat;
-	}
-	#rounded-corner tfoot td.rounded-foot-right
-	{
-		background: #e8edff url('table-images/botright.png') right bottom no-repeat;
-	}
-	#rounded-corner tbody tr:hover td
-	{
-		background: #d0dafd;
-	}
+}
 
-	#ajaxValue 
-	{
-		display: none;
-	}
-	#jsonContainer
-	{
-		display: none;
-	}
+.sidebar-app {
+	margin-top: 30px;
+	text-align: center;
+}
 
+.sidebar-app:hover {
+	cursor: pointer;
+}
 
-	</style>
+/* Application styles */
+
+.app-header {
+	margin: 15px;
+	font-size: 12px;
+}
+
+.app-container {
+	font-size: 15px;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.app-component {
+	padding: 5px;
+	border: 1px solid #0fabca;
+}
+
+.sideBarLink {
+	color: white;
+	text-decoration:none;
+}
+
+.sideBarLink:hover {
+	color: rgba(133, 128, 247, 1);
+	font-weight: bold;
+	text-decoration:none;
+}
+
+.sideBarLink:active {
+	color: rgba(133, 128, 247, .8);
+	font-weight: bold;
+	text-decoration:none;
+}
+
+/* Feed Styles */
+
+.message {
+	background: white;
+	font-size: 15px;
+	//border: 1px solid darkgrey;
+	width: 500px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0px 2px 2px darkgrey;
+}
+
+.message_header {
+	padding: 15px;
+	border-bottom: 1px solid darkgrey;
+}
+
+.message_content {
+	padding: 15px;
+}

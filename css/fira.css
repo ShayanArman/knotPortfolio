@@ -1,0 +1,13 @@
+/* Mozilla Fira Fonts */
+
+@font-face {
+        font-family: FiraSansLight;
+        src: url("../fonts/fira-sans/FiraSans-Light.woff") format("woff"),
+                 url("../fonts/fira-sans/FiraSans-Light.eot");
+}
+
+@font-face {
+        font-family: FiraSansMedium;
+        src: url("../fonts/fira-sans/FiraSans-Medium.woff") format("woff"),
+                 url("../fonts/fira-sans/FiraSans-Medium.eot");
+}

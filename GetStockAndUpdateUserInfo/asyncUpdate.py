@@ -12,10 +12,12 @@ class RenderDynamic(handle.Handler):
         price = str(StockOb.getPrice(ticker))
         shares = str(shares)
         cost = (float(price))*(float(shares))
-        if(float(price) != 0):
-            if(memBrain.isThereEnoughCashForTransaction(cost)):
-                memBrain.updateCashInMemcacheAndDBAfterTransaction(cost)
-                userStocksString = str(memBrain.userStocks())
+        currentUser = self.currentUser()
+        user = UserDB.getUserByName(currentUser)
+        if(float(price) != 0 and user):
+            newCashFloat = float(user.cash)-cost
+            if(newCashFloat >= 0): # is there enough cash
+                userStocksString = str(user.json) # get the usersStock json
                 if(userStocksString != 'noStocksBoughtYet'): # If there are stocks, then get the object and add this stock to it.
                     jsonMemoryOb = helper.getJsonObjectFromMemoryString(userStocksString)
                     
@@ -26,13 +28,17 @@ class RenderDynamic(handle.Handler):
                     dictEmpty.append(dictOb)
     
                     newString = helper.jsonToString(dictEmpty)
-                    memBrain.updateUserStocks(newString)
+                    updateDBAfterTransaction(user,str(newCashFloat),newString) #update cash and json for user
                 else: # # If they have no stocks in the DB, make a new stocks object
                     dictString = helper.jsonToString([{'boughtAt':price,'ticker':ticker,'numberOfShares':shares}])
-                    memBrain.updateUserStocks(dictString)
-    
+                    updateDBAfterTransaction(user,str(newCashFloat),dictString)
                 self.write(ticker+"~"+price+"~"+shares)
             else:
                 self.write('NotEnoughCash')
         else:
             self.write('Error')
+
+def updateDBAfterTransaction(user,cash,data):
+    user.cash = cash
+    user.json = data
+    UserDB.putUser(user)

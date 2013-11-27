@@ -9,45 +9,50 @@ CASH_MEMCACHE_KEY = "cash"
 
 # =============================================================
 
-def initiateSellingSequenceScotty(tick,shares):
+def initiateSellingSequenceScotty(tick,shares,name,user):
 	numberOfSharesForStock = 0
-	userStocksString = str(memBrain.userStocks())
 	tick = tick.upper()
+	userStocksString = str(user.json)
+	cash = float(user.cash)
 	if(userStocksString != 'noStocksBoughtYet'): # If there are stocks, then get the object and add this stock to it.
 		jsonMemoryOb = helper.getJsonObjectFromMemoryString(userStocksString)
 		for ob in jsonMemoryOb:
 			if(ob['ticker'] == tick):
 				numberOfSharesForStock += int(ob['numberOfShares'])
-	print "NUMBER OF SHARES " + str(numberOfSharesForStock)
 	if(float(shares) > numberOfSharesForStock):
 		return "moreSharesThanYouHaveError" # trying to sell more shares than you have
 	else:
 		if(float(shares) == numberOfSharesForStock):
-			print "SHAYAN number of shares is equal"
-			sellAllTheShares(tick,shares,jsonMemoryOb)
+			sellingPrice = sellAllTheShares(tick,shares,jsonMemoryOb,cash,user)
 		else:
-			sellSomeShares(tick,shares,jsonMemoryOb)
+			sellingPrice = sellSomeShares(tick,shares,jsonMemoryOb,cash,user)
+	return sellingPrice
 
 # Selling all the shares
 # Calculate the selling price. Take the sale price and subtract the commission.
 # Remove the stock from the stockInfo.json
 # take the proceeds, and add it to shayan's info. ie. increase the cash holding. 
 # Show them how much cash they have.
-def sellAllTheShares(tick,shares,data):
+def sellAllTheShares(tick,shares,data,cash,user):
 	sellingPrice = StockOb.getPrice(tick)
-	moneyMade = (sellingPrice * float(shares)) # Subtract the commission eventually
-	memBrain.updateCashInMemcacheAndDBAfterSell(moneyMade)
-	removeObjectFromData(tick,data)
+	if(sellingPrice != 0):
+		mississipiMoney = (sellingPrice * float(shares))
+		cash += mississipiMoney # Subtract the commission eventually
+		user.cash = str(cash)
+		removeObjectFromData(tick,data,user)
+	return mississipiMoney
 
-def sellSomeShares(tick,shares,data):
+def sellSomeShares(tick,shares,data,cash,user):
 	sellingPrice = StockOb.getPrice(tick) # Could return zero.
 	if(sellingPrice != 0):
-		mississipiMoney = (sellingPrice * float(shares)) # Subtract the price for selling a stock - Commission.
-		memBrain.updateCashInMemcacheAndDBAfterSell(mississipiMoney)
-		removePartsOfObjectFromData(tick,shares,data)
+		mississipiMoney = (sellingPrice * float(shares))
+		cash += mississipiMoney # Subtract the price for selling a stock - Commission.
+		user.cash = str(cash)
+		removePartsOfObjectFromData(tick,shares,data,user)
+	return mississipiMoney
 
 # Sell ALL the shares of a stock.
-def removeObjectFromData(ticker,data):
+def removeObjectFromData(ticker,data,user):
 	listLength = int(len(data))
 	counter = 0
 	for x in range(0,listLength):
@@ -57,10 +62,10 @@ def removeObjectFromData(ticker,data):
 		else:
 			counter += 1
 	newString = helper.jsonToString(data)
-	memBrain.updateUserStocks(newString)
+	updateDBAfterTransaction(user,newString)
 
 # Only sell a few shares of the stock.
-def removePartsOfObjectFromData(ticker,shares,data):
+def removePartsOfObjectFromData(ticker,shares,data,user):
 	sellShares = int(shares)
 	listLength = int(len(data))
 	counter = 0
@@ -79,8 +84,8 @@ def removePartsOfObjectFromData(ticker,shares,data):
 		else:
 			counter += 1
 	newString = helper.jsonToString(data)
-	memBrain.updateUserStocks(newString)
-                 
+	updateDBAfterTransaction(user,newString)
 
-
-
+def updateDBAfterTransaction(user,data):
+    user.json = data
+    UserDB.putUser(user)

@@ -1,0 +1,111 @@
+/* 
+*	
+*	CSSG Collections: Forms
+*	designed and coded by Alen Grakalic (http://cssglobe.com)
+*	brought to you by Templatica (http://templatica.com)
+*
+*/
+
+body {
+	background-color: white;
+	font-family: FiraSansMedium;
+	color: white;
+	margin-left: 100px;
+}
+table, input, textarea, select, li{
+	font:100% Trebuchet MS, Arial, Helvetica, Sans-Serif;
+	line-height:160%;
+	color:#333;
+	}				
+p, blockquote, ul, ol, form{
+	margin:1em 0;
+	}
+table{
+	margin:1em 0;
+	width:100%;
+	border-collapse:collapse;
+	}
+th, td{	
+	padding:2px 5px;
+	}	
+th{	
+	text-align:left;
+	}
+li{
+	display:list-item;
+	}	
+
+
+/* form 2 */
+
+	#form2{
+		margin:1em 0;
+		color:#fff;
+		width:320px; /* customize width, this form have fluid layout */
+		border-radius:25px;
+		}
+	#form2 h3{
+		margin:0;
+		background:#57a700 url(../images/form2/form_heading.gif) repeat-x;		
+		color:#fff;
+		font-size:20px;
+		border:1px solid #57a700;
+		border-bottom:none;
+		}		
+	#form2 h3 span{
+		display:block;
+		padding:10px 20px;
+		background:url(../images/form2/form_ico.gif) no-repeat 93% 50%;			
+		}				
+	#form2 fieldset{
+		margin:0;
+		padding:0;
+		border:none;	
+		border-top:3px solid #000;
+		background:#000 url(../images/form2/form_top.gif) repeat-x;		
+		padding-bottom:1em;
+		border-radius:5px;
+		}		
+	#form2 legend{display:none;}	
+	#form2 p{margin:.5em 20px;}	
+	#form2 label{display:block;}	
+	#form2 input, #form2 textarea{		
+		width:272px;
+		border:1px solid #111;
+		background:#4D4D4D url(../images/form2/form_input.gif) repeat-x;
+		padding:5px 3px;
+		color:#fff;
+		}		
+	#form2 textarea{
+		height:125px;
+		overflow:auto;
+		}					
+	#form2 p.submit{
+		text-align:right;
+		padding-top: 10px;
+		}	
+	#form2 button{
+		text-align:right;
+		padding:0 20px;
+		height:32px;
+		line-height:32px;		
+		font-size: 12px;
+		border:1px solid #70ad2e;
+		background:#5aae00 url(../images/form2/form_button.gif) repeat-x;
+		color:#fff;
+		border-radius:4px;
+		cursor:pointer;		
+		text-align:center;		
+		}		
+	#form2 textarea:focus {
+		outline: blue;
+		border: 1px solid blue;
+	}		
+	#form2 input:focus {
+		outline: blue;
+		border: 1px solid rgb(68, 155, 61);
+		border-radius: 2px;
+	}	
+
+/* // form 2 */
+

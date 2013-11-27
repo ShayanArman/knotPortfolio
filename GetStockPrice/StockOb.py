@@ -14,7 +14,7 @@ TIME = "time"
 def getPrice(tick):
 	dateTimeArray = timeHelp.makeDayTimeStrings(datetime.utcnow())
 	price = cachedStock(tick,dateTimeArray)
-	return price
+	return round(price,2) ### Made a change, rounding! Test this! SHAYAN 
 
 def cachedStock(tick,dateTimeArray):
 	today = dateTimeArray[0] #Y-M-D
