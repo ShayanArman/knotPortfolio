@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	// $(".sidebar-app p").removeClass("active")
+	// $("#buyLinkName").addClass("active");
+	
 	$("#buystocksbutton").click(function() {
 		$('#buystocksbutton').attr('disabled', 'disabled');
 		var ticker = $("#tickerInput").val();

@@ -91,7 +91,7 @@ li{
 		line-height:32px;		
 		font-size: 12px;
 		border:1px solid #70ad2e;
-		background:#5aae00 url(../images/form2/form_button.gif) repeat-x;
+		background:#4099FF url(../images/form2/form_button.gif) repeat-x;
 		color:#fff;
 		border-radius:4px;
 		cursor:pointer;		
@@ -103,7 +103,7 @@ li{
 	}		
 	#form2 input:focus {
 		outline: blue;
-		border: 1px solid rgb(68, 155, 61);
+		border: 1px solid #4099FF;
 		border-radius: 2px;
 	}	
 

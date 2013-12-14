@@ -2,7 +2,6 @@
 	<head>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<script src="../js/mainScript.js"></script>
-		<script src="../js/buyStocksHandler.js"></script>
 		<link rel="stylesheet" href="/css/table.css">
 		<link rel="stylesheet" href="/css/main.css">
 		<link rel="stylesheet" href="/css/fira.css">
@@ -15,27 +14,27 @@
 			<div class="sidebar">
 				<div class="sidebar-app-container">
 					<div class="sidebar-app">
-							<a class="sideBarLink" id="portfolioButton" href="/"><i class="icon-book" style="font-size: 35px;"></i></a>
+							<a class="sideBarLink" id="portfolio" href="/"><i class="icon-book" style="font-size: 35px;"></i></a>
 							<p id="portfolioLinkName">Portfolio</p>
 					</div>
 					<div class="sidebar-app">
-							<a class="sideBarLink" id="buyStocksLink" href="/buystocks"><i class="icon-plus-sign" style="font-size: 35px;"></i></a>
-							<p>Buy</p>
+							<a class="sideBarLink" id="buystocks" href="/buystocks"><i class="icon-plus-sign" style="font-size: 35px;"></i></a>
+							<p id="buyLinkName">Buy</p>
 					</div>
 					<div class="sidebar-app">
-							<a class="sideBarLink" href="/sellstocks"><i class="icon-minus-sign" style="font-size: 35px;"></i></a>
+							<a class="sideBarLink" id="sellstocks" href="/sellstocks"><i class="icon-minus-sign" style="font-size: 35px;"></i></a>
 							<p>Sell</p>
 					</div>
 					<div class="sidebar-app">
-							<a class="sideBarLink" href="/data"><i class="icon-tasks" style="font-size: 35px;"></i></a>
+							<a class="sideBarLink" id="data" href="/data"><i class="icon-tasks" style="font-size: 35px;"></i></a>
 							<p>Data</p>
 					</div>
 					<div class="sidebar-app">
-							<a class="sideBarLink" href="/settings"><i class="icon-wrench" style="font-size: 35px;"></i></a>
+							<a class="sideBarLink" id="settings" href="/settings"><i class="icon-wrench" style="font-size: 35px;"></i></a>
 							<p>Settings</p>
 					</div>
 					<div class="sidebar-app">
-							<a class="sideBarLink" href="/logout"><i class="icon-signout" style="font-size: 35px;"></i></a>
+							<a class="sideBarLink" id="signOutLink" href="/logout"><i class="icon-signout" style="font-size: 35px;"></i></a>
 							<p>Sign Out</p>
 					</div>
 				</div>

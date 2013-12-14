@@ -15,8 +15,48 @@ body {
 }
 
 .active {
-	color:blue;
+	color:#8580F7;
 }
+
+.portfolioOuterContainer {
+	margin-bottom: -27px;
+}
+
+.cash_container {
+	width: 100px;
+    display: inline-block;
+    height: 20px;
+    background-color: rgba(180, 180, 180, 0.54);
+}
+
+.cash_inner_container {
+	display: inline-block;
+    width: 100px;
+    background-color: #4099FF;
+    height: 100%;
+}
+.portfolio_inner_container {
+	display: inline-block;
+    width: 100px;
+    background-color: #4099FF;
+    height: 100%;
+}
+
+.cash_text {
+	display: inline-block;
+    margin-left: 10px;
+}
+
+#cashVal {
+	display: inline;
+	margin-left: 2px;
+}
+
+#portVal {
+	display: inline;
+	margin-left: 2px;
+}
+
 /* Sidebar styles */
 .sidebar {
 	/*background-image: linear-gradient(#484e55, #3a3f44 60%, #313539);*/
@@ -72,7 +112,7 @@ body {
 }
 
 .sideBarLink:hover {
-	color: rgba(133, 128, 247, 1);
+	color: #4099FF;
 	font-weight: bold;
 	text-decoration:none;
 }

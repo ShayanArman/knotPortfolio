@@ -1,7 +1,25 @@
+<head>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="../js/portfolioScript.js"></script>
+</head>
+
 {% extends "MainStockPage.html" %}
 {% block content %}
 
-<p>{{cash}}</p>
+<div class="portfolioOuterContainer">
+	<div class="cash_container">
+		<div class="portfolio_inner_container"></div>
+	</div>
+	<p class="cash_text" id="cashTextPTag">Total Portfolio: <p id="portVal">{{cash}}</p></p>
+</div>
+
+<div>
+	<div class="cash_container">
+		<div class="cash_inner_container"></div>
+	</div>
+	<p class="cash_text" id="cashTextPTag">Cash: <p id="cashVal">{{cash}}</p></p>
+</div>
+
 <table id="rounded-corner">
 	<thead>
 		<tr>
@@ -9,7 +27,8 @@
 			<th scope="col" class="rounded-q2">BookValue</th>
 			<th scope="col" class="rounded-q3">MarketValue</th>
 			<th scope="col" class="rounded-q1">Bought At</th>
-			<th scope="col" class="rounded-q4">Price</th>
+			<th scope="col" class="rounded-q5">Price</th>
+			<th scope="col" class="rounded-q4">Percent Gain</th>
  		</tr>
 	</thead
 	<tfoot>
