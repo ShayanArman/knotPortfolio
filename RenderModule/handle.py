@@ -1,16 +1,9 @@
 import os
-import re
-import sys
 import webapp2
 import jinja2
 
-from string import letters
-from google.appengine.ext import db
-from datetime import timedelta, datetime
-from google.appengine.api import memcache
-
-template_dir = os.path.join(os.path.dirname(__file__), 'templates')
-jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
+# template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+# jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
 
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(['templates', 'templates\css']));
 

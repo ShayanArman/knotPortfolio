@@ -1,8 +1,6 @@
-from MemoryModule import mem_cache
 from DataStoreModule import UserDB
 from RenderModule import handle
-from MemoryLogic import memBrain
-from StockPricesDB import Stocks
+#from StockPricesDB import Stocks
 
 def isCorrectUser(dbPassword,password):
     if(dbPassword == password):

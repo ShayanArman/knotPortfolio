@@ -1,6 +1,4 @@
 from google.appengine.ext import db
-from google.appengine.ext import db
-from datetime import timedelta, datetime
 
 STOCK_KEY = 'stockJSON'
 class Stocks(db.Model):

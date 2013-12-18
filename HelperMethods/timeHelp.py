@@ -1,4 +1,3 @@
-from datetime import date
 from datetime import datetime
 
 DAY_FORMAT = "%y-%m-%d"

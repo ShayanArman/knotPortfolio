@@ -1,11 +1,11 @@
 from RenderModule import handle
 from HelperMethods import helper
-from MemoryLogic import memBrain
 from GetStockPrice import StockOb
 from DataStoreModule import UserDB
 USER_MEMCACHE_KEY = "name"
 JSON_MEMCACHE_KEY = "json"
 CASH_MEMCACHE_KEY = "cash"
+
 # Buy stocks through this. 
 class RenderDynamic(handle.Handler):
     def get(self,ticker,shares):

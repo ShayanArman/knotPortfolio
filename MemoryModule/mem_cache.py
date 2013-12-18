@@ -1,21 +1,5 @@
-import os
-import re
-import sys
-import ystockquote
-import webapp2
-import jinja2
-import json
-import random
-import hashlib
-import hmac
-import time
-
-from string import letters
-from google.appengine.ext import db
-from google.appengine.ext import db
-from datetime import timedelta, datetime
+# from google.appengine.ext import db
 from google.appengine.api import memcache
-
 
 USER_MEMCACHE_KEY  = "name"
 JSON_MEMCACHE_KEY  = "json"

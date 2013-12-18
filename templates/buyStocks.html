@@ -4,26 +4,28 @@
 </head>
 {% extends "MainStockPage.html" %}
 {% block content %}
-<div id="container">
-
-		<form id="form2">	
-		
-			<!-- <h3><span>Contact Us</span></h3> Makes a green title bar-->
-		
-			<fieldset>
-				<p class="first">
-					<label for="name">Ticker Symbol</label>
-					<input type="text" name="name" id="tickerInput" size="30" />
-				</p>
-				<p>
-					<label for="email">Number of Shares</label>
-					<input type="text" name="email" id="quantitySharesInput" size="30" />
-				</p>
-				
-				<p class="submit"><button id="buystocksbutton" type="submit">BUY</button></p>		
-							
-			</fieldset>					
-		</form>	
-</div>
-
+	<form id="form2">	
+		<!-- <h3><span>Contact Us</span></h3> Makes a green title bar-->
+		<fieldset>
+			<p class="first">
+				<label for="name">Ticker Symbol</label>
+				<input type="text" name="name" id="tickerInput" size="30" />
+			</p>
+			<p>
+				<label for="email">Number of Shares</label>
+				<input type="text" name="email" id="quantitySharesInput" size="30" />
+			</p>
+			<p class="submit"><button id="buystocksbutton" type="submit">BUY</button></p>					
+		</fieldset>					
+	</form>	
+	<form id="searchStockPriceForm">	
+		<!-- <h3><span>Contact Us</span></h3> Makes a green title bar-->
+		<fieldset>
+			<p class="first">
+				<label for="name">Ticker Symbol</label>
+				<input type="text" name="name" id="tickerInput" size="30" />
+			</p>
+			<p class="submit"><button id="buystocksbutton" type="submit">QUERY</button></p>					
+		</fieldset>					
+	</form>
 {% endblock %}

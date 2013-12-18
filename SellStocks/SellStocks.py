@@ -1,8 +1,6 @@
-from RenderModule import handle
 from HelperMethods import helper
-from MemoryLogic import memBrain
 from GetStockPrice import StockOb
-from DataStoreModule import UserDB
+from DataStoreModule import UserDB # note sell stocks should not handle database requests.
 USER_MEMCACHE_KEY = "name"
 JSON_MEMCACHE_KEY = "json"
 CASH_MEMCACHE_KEY = "cash"

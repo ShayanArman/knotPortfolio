@@ -1,5 +1,4 @@
 from RenderModule import handle
-from MemoryLogic import memBrain
 from DataStoreModule import UserDB
 
 class MainPage(handle.Handler):

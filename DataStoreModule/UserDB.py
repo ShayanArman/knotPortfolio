@@ -1,7 +1,4 @@
 from google.appengine.ext import db
-from google.appengine.ext import db
-from datetime import timedelta, datetime
-
 
 class UserStock(db.Model):
     username = db.StringProperty(required = True)

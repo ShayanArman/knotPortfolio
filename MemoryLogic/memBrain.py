@@ -1,8 +1,5 @@
 from MemoryModule import mem_cache
 from DataStoreModule import UserDB
-from RenderModule import handle
-from HelperMethods import helper
-from StockPricesDB import Stocks
 
 USER_MEMCACHE_KEY = "name"
 JSON_MEMCACHE_KEY = "json"
