@@ -4,11 +4,21 @@
 </head>
 {% extends "MainStockPage.html" %}
 {% block content %}
+	
+	<div class="querystocksform">	
+		<!-- <h3><span>Contact Us</span></h3> Makes a green title bar-->
+		<fieldset>
+			<input placeholder="Enter Symbol" style="color:white;text-align:center" type="text" name="name" id="priceSearchInput" size="30" />
+			<button id="querystockbutton" type="button">QUERY</button>
+			<div class="priceUpdate"></div>
+		</fieldset>					
+	</div>
+
 	<form id="form2">	
 		<!-- <h3><span>Contact Us</span></h3> Makes a green title bar-->
 		<fieldset>
 			<p class="first">
-				<label for="name">Ticker Symbol</label>
+				<label for="name">Quote</label>
 				<input type="text" name="name" id="tickerInput" size="30" />
 			</p>
 			<p>
@@ -18,14 +28,4 @@
 			<p class="submit"><button id="buystocksbutton" type="submit">BUY</button></p>					
 		</fieldset>					
 	</form>	
-	<form id="searchStockPriceForm">	
-		<!-- <h3><span>Contact Us</span></h3> Makes a green title bar-->
-		<fieldset>
-			<p class="first">
-				<label for="name">Ticker Symbol</label>
-				<input type="text" name="name" id="tickerInput" size="30" />
-			</p>
-			<p class="submit"><button id="buystocksbutton" type="submit">QUERY</button></p>					
-		</fieldset>					
-	</form>
 {% endblock %}

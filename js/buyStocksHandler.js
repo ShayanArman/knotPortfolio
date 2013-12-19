@@ -1,11 +1,22 @@
 $(document).ready(function() {
 	// $(".sidebar-app p").removeClass("active")
 	// $("#buyLinkName").addClass("active");
-	
+	$("#querystockbutton").click(function() {
+		var quoteToSearch = $("#priceSearchInput").val();
+		$.getJSON("/getPrice/"+quoteToSearch.toUpperCase()).complete(function(data) {
+			var response = String(data.responseText);
+			if(response == 'Error') {
+				alert('There was an error, please try again');
+			} else {
+				$(".priceUpdate").append(quoteToSearch + ': ' + response);
+			}
+		});
+	});
+
 	$("#buystocksbutton").click(function() {
 		$('#buystocksbutton').attr('disabled', 'disabled');
 		var ticker = $("#tickerInput").val();
-		var numberOfShares = $("#quantitySharesInput").val();
+		var numberOfShares = $("#quantitySharesInput").val()
 		if(getInt(numberOfShares) != 'wrong' && numberOfShares > 0) {
 			$.getJSON("/render/"+ticker.toUpperCase()+"/"+numberOfShares).complete(function(data) {
 				loadedValues = data.responseText;
@@ -21,7 +32,7 @@ $(document).ready(function() {
 						window.location.href = "/";
 					}
 					$('#buystocksbutton').removeAttr('disabled');
-				});
+			});
 		} else {
 			alert('Please enter a proper number');
 			$('#buystocksbutton').removeAttr('disabled');

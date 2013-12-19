@@ -11,6 +11,7 @@ from BuyStocksHandler import buyHandler
 from SellStocksHandler import sellHandler
 from DataHandler import data
 from Settings import settings
+from GetStockPrice import stockPriceHandler
 
 #//================================================================================================
 
@@ -21,6 +22,7 @@ app = webapp2.WSGIApplication([('/',login.LoginUser),
                                 ('/sell/(.*)/(.*)', sell.SellStocksPage),
                                 ('/logout', logout.LogOut),
                                 ('/settings', settings.Settings),
+                                ('/getPrice/(.*)', stockPriceHandler.GetPriceHandler),
                                 ('/data', data.Data),
                                 ('/buystocks', buyHandler.BuyHandler),
                                 ('/sellstocks',sellHandler.SellHandler)], debug=True) # Sell / Ticker / Number Of Shares

@@ -38,41 +38,46 @@ li{
 
 /* form 2 */
 
-	#form2{
+	#form2
+	{
 		margin:1em 0;
 		color:#fff;
 		width:320px; /* customize width, this form have fluid layout */
 		border-radius:25px;
-		}
-	#form2 h3{
+		background-color: #121212;
+	}
+	#form2 h3
+	{
 		margin:0;
-		background:#57a700 url(../images/form2/form_heading.gif) repeat-x;		
+		background:#57a700 repeat-x;		
 		color:#fff;
 		font-size:20px;
 		border:1px solid #57a700;
 		border-bottom:none;
-		}		
-	#form2 h3 span{
+	}		
+	#form2 h3 span
+	{
 		display:block;
 		padding:10px 20px;
 		background:url(../images/form2/form_ico.gif) no-repeat 93% 50%;			
-		}				
-	#form2 fieldset{
+	}				
+	#form2 fieldset
+	{
 		margin:0;
 		padding:0;
 		border:none;	
 		border-top:3px solid #000;
-		background:#000 url(../images/form2/form_top.gif) repeat-x;		
+		background:#000 repeat-x;		
 		padding-bottom:1em;
 		border-radius:5px;
-		}		
+	}		
 	#form2 legend{display:none;}	
 	#form2 p{margin:.5em 20px;}	
 	#form2 label{display:block;}	
 	#form2 input, #form2 textarea{		
 		width:272px;
 		border:1px solid #111;
-		background:#4D4D4D url(../images/form2/form_input.gif) repeat-x;
+		background:#4D4D4D repeat-x;
 		padding:5px 3px;
 		color:#fff;
 		}		
@@ -90,8 +95,8 @@ li{
 		height:32px;
 		line-height:32px;		
 		font-size: 12px;
-		border:1px solid #70ad2e;
-		background:#4099FF url(../images/form2/form_button.gif) repeat-x;
+		border:1px solid #4099FF;
+		background:#4099FF repeat-x;
 		color:#fff;
 		border-radius:4px;
 		cursor:pointer;		
@@ -108,4 +113,73 @@ li{
 	}	
 
 /* // form 2 */
+
+
+/* querystocksform */
+
+	.querystocksform
+	{
+		margin:1em 0;
+		color:#fff;
+		background-color: #121212;
+		width:320px; /* customize width, this form have fluid layout */
+		border-radius:25px;
+	}
+	.querystocksform fieldset{
+		margin:0;
+		padding:0;
+		border:none;	
+		border-top:3px solid #000;
+		background:#121212;
+		padding-bottom:1em;
+		border-radius:5px;
+	}		
+	.querystocksform legend{display:none;}	
+	.querystocksform p{margin:.5em 20px;}	
+	.querystocksform label{display:inline;}	
+	.querystocksform input, #querystocksform textarea{		
+		margin-left: 18px;
+		margin-top: 12px;
+		width:150px;
+		border:1px solid #111;
+		background:#4D4D4D url(../images/form2/form_input.gif) repeat-x;
+		padding:5px 3px;
+		color:#fff;
+		}		
+	.querystocksform textarea{
+		height:125px;
+		overflow:auto;
+		display: inline-block;
+		}					
+	.querystocksform p.submit
+	{
+		text-align:right;
+		padding-top: 10px;
+	}	
+	.querystocksform button{
+		text-align:right;
+		margin-left: 39px;
+		padding:0 20px;
+		height:32px;
+		line-height:32px;		
+		font-size: 12px;
+		border:1px solid #4099FF;
+		background:#4099FF repeat-x;
+		color:#fff;
+		border-radius:4px;
+		cursor:pointer;		
+		text-align:center;		
+	}		
+
+	.querystocksform input:focus {
+		outline: blue;
+		border: 1px solid #4099FF;
+		border-radius: 2px;
+	}	
+
+	.priceUpdate {
+		padding: 10px 10px 10px 10px;
+	}
+
+/* // query stocks form */
 

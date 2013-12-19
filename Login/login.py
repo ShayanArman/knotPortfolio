@@ -6,6 +6,7 @@ def isCorrectUser(dbPassword,password):
     if(dbPassword == password):
         return True
     return False
+    
 class LoginUser(handle.Handler):
     def get(self):
         #Stocks.insertStockStringInDataBase("{'aapl': {'price': '188', 'time': '10-5-6', 'day':'10-5-2012'}}")
