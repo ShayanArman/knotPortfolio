@@ -1,6 +1,7 @@
 <head>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="../js/buyStocksHandler.js"></script>
+	<link rel="stylesheet" href="css/screen.css" media="screen" />
 </head>
 {% extends "MainStockPage.html" %}
 {% block content %}
@@ -8,9 +9,9 @@
 	<div class="querystocksform">	
 		<!-- <h3><span>Contact Us</span></h3> Makes a green title bar-->
 		<fieldset>
-			<input placeholder="Enter Symbol" style="color:white;text-align:center" type="text" name="name" id="priceSearchInput" size="30" />
+			<input placeholder="Enter Symbol" class="inputStyle" type="text" name="name" id="priceSearchInput" size="30"/>
 			<button id="querystockbutton" type="button">QUERY</button>
-			<div class="priceUpdate"></div>
+			<div id="retriedStockHolder" style="display:none"><input placeholder="Price" class="inputStyle" type="text" name="name" id="priceRetrieved" size="30"/></div>
 		</fieldset>					
 	</div>
 
@@ -18,12 +19,10 @@
 		<!-- <h3><span>Contact Us</span></h3> Makes a green title bar-->
 		<fieldset>
 			<p class="first">
-				<label for="name">Quote</label>
-				<input type="text" name="name" id="tickerInput" size="30" />
+				<input class="inputStyle" placeholder="Quote" type="text" name="name" id="tickerInput" size="30"/>
 			</p>
 			<p>
-				<label for="email">Number of Shares</label>
-				<input type="text" name="email" id="quantitySharesInput" size="30" />
+				<input class="inputStyle" placeholder="Number of Shares" type="text" name="email" id="quantitySharesInput" size="30"/>
 			</p>
 			<p class="submit"><button id="buystocksbutton" type="submit">BUY</button></p>					
 		</fieldset>					

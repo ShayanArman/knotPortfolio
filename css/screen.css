@@ -137,7 +137,7 @@ li{
 	.querystocksform legend{display:none;}	
 	.querystocksform p{margin:.5em 20px;}	
 	.querystocksform label{display:inline;}	
-	.querystocksform input, #querystocksform textarea{		
+/*	.querystocksform input, #querystocksform textarea{		
 		margin-left: 18px;
 		margin-top: 12px;
 		width:150px;
@@ -145,7 +145,7 @@ li{
 		background:#4D4D4D url(../images/form2/form_input.gif) repeat-x;
 		padding:5px 3px;
 		color:#fff;
-		}		
+		}*/		
 	.querystocksform textarea{
 		height:125px;
 		overflow:auto;
@@ -172,14 +172,25 @@ li{
 	}		
 
 	.querystocksform input:focus {
-		outline: blue;
 		border: 1px solid #4099FF;
 		border-radius: 2px;
-	}	
-
-	.priceUpdate {
-		padding: 10px 10px 10px 10px;
 	}
 
 /* // query stocks form */
 
+/* input styles for the forms */
+	.inputStyle {
+		text-align:center;
+		margin-left: 18px;
+		margin-top: 12px;
+		width:150px;
+		border:1px solid #111;
+		background:#4D4D4D url(../images/form2/form_input.gif) repeat-x;
+		padding:5px 3px;
+		color:#fff;
+	}
+
+	/*.queryPriceRetrieved {
+		font-weight:bold;
+	}*/
+/* input styles for the forms */

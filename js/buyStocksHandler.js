@@ -2,14 +2,19 @@ $(document).ready(function() {
 	// $(".sidebar-app p").removeClass("active")
 	// $("#buyLinkName").addClass("active");
 	$("#querystockbutton").click(function() {
-		var quoteToSearch = $("#priceSearchInput").val();
-		$.getJSON("/getPrice/"+quoteToSearch.toUpperCase()).complete(function(data) {
+		$('#querystockbutton').attr('disabled', 'disabled');
+		var quoteToSearch = $("#priceSearchInput").val().toUpperCase();
+		$.getJSON("/getPrice/"+quoteToSearch).complete(function(data) {
 			var response = String(data.responseText);
 			if(response == 'Error') {
 				alert('There was an error, please try again');
 			} else {
-				$(".priceUpdate").append(quoteToSearch + ': ' + response);
+				$("#retriedStockHolder").show();
+				$("#priceRetrieved").val("Price : $"+response);
+				$("#priceSearchInput").val(quoteToSearch);
+				$("#tickerInput").val(quoteToSearch);
 			}
+			$('#querystockbutton').removeAttr('disabled');
 		});
 	});
 
