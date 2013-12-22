@@ -5,13 +5,19 @@
 </head>
 {% extends "MainStockPage.html" %}
 {% block content %}
-	
+	<div>
+		<div class="cash_container">
+			<div class="cash_inner_container"></div>
+		</div>
+		<p class="cash_text" id="cashTextPTag">Cash: <p id="cashVal">{{cash}}</p></p>
+	</div>
+
 	<div class="querystocksform">	
 		<!-- <h3><span>Contact Us</span></h3> Makes a green title bar-->
 		<fieldset>
 			<input placeholder="Enter Symbol" class="inputStyle" type="text" name="name" id="priceSearchInput" size="30"/>
 			<button id="querystockbutton" type="button">QUERY</button>
-			<div id="retriedStockHolder" style="display:none"><input placeholder="Price" class="inputStyle" type="text" name="name" id="priceRetrieved" size="30"/></div>
+			<div id="retriedStockHolder" style="display:none"><input disabled="disabled" placeholder="Price" class="inputStyle" type="text" name="name" id="priceRetrieved" size="30"/></div>
 		</fieldset>					
 	</div>
 

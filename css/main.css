@@ -23,7 +23,7 @@ body {
 }
 
 .cash_container {
-	width: 100px;
+	width: 200px;
     display: inline-block;
     height: 20px;
     background-color: rgba(180, 180, 180, 0.54);
@@ -31,13 +31,13 @@ body {
 
 .cash_inner_container {
 	display: inline-block;
-    width: 100px;
+    width: 200px;
     background-color: #4099FF;
     height: 100%;
 }
 .portfolio_inner_container {
 	display: inline-block;
-    width: 100px;
+    width: 200px;
     background-color: #4099FF;
     height: 100%;
 }

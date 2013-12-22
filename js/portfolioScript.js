@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var percent = ((($("#cashVal").text())/100000)*100);
+	var percent = ((($("#cashVal").text())/100000)*100)*2;
 	$(".cash_inner_container").css("width",percent);
 
 	$.getJSON("/renderUserStocksDB").complete(function(data) {
@@ -29,9 +29,17 @@ $(document).ready(function() {
 					$('#tableBody').append(tableRow);
 				}
 			}
-			var totalPosition = (parseInt($("#cashVal").text())+totalMarketPosition);
-			$(".portfolio_inner_container").css("width",totalPosition/1000);
-			$("#portVal").text(totalPosition);
+			var totalPortfolioValue = (parseInt($("#cashVal").text())+totalMarketPosition);
+			var percentPortfolioBarWidth = (totalPortfolioValue*2)/1000;
+			if(percentPortfolioBarWidth > 200) {
+				percentPortfolioBarWidth = 200;
+			}
+			else if(percentPortfolioBarWidth < 0) {
+				percentPortfolioBarWidth = 0;
+			}
+
+			$(".portfolio_inner_container").css("width",percentPortfolioBarWidth);
+			$("#portVal").text(totalPortfolioValue);
 
 	});
 

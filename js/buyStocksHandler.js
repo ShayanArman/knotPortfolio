@@ -1,6 +1,8 @@
 $(document).ready(function() {
-	// $(".sidebar-app p").removeClass("active")
-	// $("#buyLinkName").addClass("active");
+	
+	var percent = ((($("#cashVal").text())/100000)*100)*2;
+	$(".cash_inner_container").css("width",percent);
+
 	$("#querystockbutton").click(function() {
 		$('#querystockbutton').attr('disabled', 'disabled');
 		var quoteToSearch = $("#priceSearchInput").val().toUpperCase();
