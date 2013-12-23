@@ -1,21 +1,21 @@
 $(document).ready(function() {
+	var globalArray = [];
 	$.getJSON("/renderUserStocksDB").complete(function(data) {
 		var jstring = data.responseText;
 		if(jstring != 'Empty') {
 			var jarray = JSON.parse(jstring);
 			var color = 'red';
+			globalArray = jarray;
 			for (var i=0;i<jarray.length;i++) { 
 				companyTicker = jarray[i].ticker;
 				numberShares  = jarray[i].numberOfShares;
 				currentPrice  = jarray[i].currentPrice;
-				marketValue   = currentPrice*numberShares;
-				marketValue   = Math.round(marketValue * 100)/100;
+				marketValue   = roundToTwo(currentPrice*numberShares);
 				originalPrice = jarray[i].boughtAt;
-				bookValue     = numberShares*originalPrice;
-				bookValue     = Math.round(bookValue * 100)/100;
+				bookValue     = roundToTwo(numberShares*originalPrice);
 
-				moneyMade 	  = marketValue - bookValue;
-				percentGain   = (((marketValue/bookValue)-1)*100).toFixed(2);
+				moneyMade 	  = roundToTwo(marketValue - bookValue);
+				percentGain   = roundToTwo(((marketValue/bookValue)-1)*100);
 
 
 				if(currentPrice>originalPrice) {
@@ -62,12 +62,16 @@ $(document).ready(function() {
 	    }
 	}
 
+	function roundToTwo(value) {
+    	return(Math.round(value * 100) / 100);
+	}
+
 	function makeTableRows(tick,moneyMade,percentGain,currentPrice,numberShares,color) {
 		var row = "<tr><td style=\"color:"+color+";font-weight:bold\">"+tick+"</td>"+
-							"<td>"+moneyMade+"</td>"+
+							"<td style=\"color:"+color+";font-weight:bold\">"+moneyMade+"</td>"+
 							"<td style=\"color:"+color+";font-weight:bold\">"+percentGain+" %</td>"+
-							"<td>"+currentPrice+"</td>"+
-							"<td style=\"color:"+color+";font-weight:bold\">"+numberShares+"</td></tr>";
+							"<td style=\"color:"+color+";font-weight:bold\">"+currentPrice+"</td>"+
+							"<td>"+numberShares+"</td></tr>";
 		return row;
 	}
 

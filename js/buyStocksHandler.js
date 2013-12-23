@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var sharePrice;
+	var sharePrice = 0;
 	var percent = ((($("#cashVal").text())/100000)*100)*2;
 	$(".cash_inner_container").css("width",percent);
 
@@ -7,7 +7,7 @@ $(document).ready(function() {
 		$('#querystockbutton').attr('disabled', 'disabled');
 		var quoteToSearch = $("#priceSearchInput").val().toUpperCase();
 		$.getJSON("/getPrice/"+quoteToSearch).complete(function(data) {
-			var sharePrice = String(data.responseText);
+			sharePrice = String(data.responseText);
 			if(sharePrice == 'Error') {
 				alert('There was an error, please try again');
 			} else {
@@ -22,10 +22,8 @@ $(document).ready(function() {
 
     $('#quantitySharesInput').keyup(function(event) {
         var numberSharesDog = $(this).val();
-        var pricePerShare = $("#priceRetrieved").val();
-        pricePerShare = parseFloat(pricePerShare.substring(9,pricePerShare.length));
-        if(pricePerShare) {
-        	$('#mirrorInput').val("$ " + (numberSharesDog*pricePerShare));
+        if(sharePrice != 0) {
+        	$('#mirrorInput').val("$ " + (numberSharesDog*sharePrice).toFixed(2));
         }
     });
 
@@ -55,6 +53,10 @@ $(document).ready(function() {
 		}
 	
 	});
+
+	function roundToTwo(value) {
+    	return(Math.round(value * 100) / 100);
+	}
 
 	function getInt(x) {
 	    if (typeof x !== "number" && typeof x !== "string" || x === "") {

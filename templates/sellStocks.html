@@ -6,23 +6,7 @@
 </head>
 {% extends "MainStockPage.html" %}
 {% block content %}
-	<form id="form2">	
-		<!-- <h3><span>Contact Us</span></h3> Makes a green title bar-->
-		<fieldset>
-			<p class="first">
-				<label for="name">Ticker Symbol</label>
-				<input type="text" name="name" id="tickerSell" size="30" />
-			</p>
-			<p>
-				<label for="email">Number of Shares</label>
-				<input type="text" name="email" id="numberSharesSell" size="30" />
-			</p>
-			
-			<p class="submit"><button id="sellstocksbutton" type="submit">SELL</button></p>		
-						
-		</fieldset>					
-	</form>	
-
+	
 	<table id="rounded-corner">
 		<thead>
 			<tr>
@@ -40,5 +24,23 @@
 		<tbody id="tableBody">
 		</tbody>
 	</table>
+
+	<form id="form2">	
+		<!-- <h3><span>Contact Us</span></h3> Makes a green title bar-->
+		<fieldset>
+			<p class="first">
+				<input class="inputStyle" placeholder="Ticker Symbol" type="text" name="name" id="tickerSell" size="30" />
+			</p>
+			<p>
+				<input class="inputStyle" placeholder="Number of Shares" type="text" name="email" id="numberSharesSell" size="30" />
+			</p>
+			<p>
+				<input disabled="disabled" placeholder="Total Transaction Cost" class="inputStyle" type="text" name="name" id="mirrorInput" size="30"/>
+			</p>
+
+			<p class="submit"><button id="sellstocksbutton" type="submit">SELL</button></p>		
+						
+		</fieldset>					
+	</form>	
 
 {% endblock %}
