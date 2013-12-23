@@ -29,7 +29,7 @@ $(document).ready(function() {
 					$('#tableBody').append(tableRow);
 				}
 			}
-			var totalPortfolioValue = (parseInt($("#cashVal").text())+totalMarketPosition);
+			var totalPortfolioValue = Math.round((parseFloat($("#cashVal").text())+totalMarketPosition)*100)/100;
 			var percentPortfolioBarWidth = (totalPortfolioValue*2)/1000;
 			if(percentPortfolioBarWidth > 200) {
 				percentPortfolioBarWidth = 200;

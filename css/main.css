@@ -6,6 +6,7 @@ body {
 	color: grey;
 	margin-left: 100px;
 }
+
 #container{	
 	margin:0 auto;
 	background:#fff;
@@ -14,25 +15,25 @@ body {
 	text-align:left;
 }
 
-.active {
-	color:#8580F7;
-}
+/* Portfolio and cash containers */
 
 .portfolioOuterContainer {
-	margin-bottom: -27px;
+	padding-bottom: 1px;
 }
 
 .cash_container {
 	width: 200px;
     display: inline-block;
-    height: 20px;
-    background-color: rgba(180, 180, 180, 0.54);
+    height: 25px;
+    outline: 1px solid rgba(0,0,0,.2);
+	background-color: #fff;
 }
 
 .cash_inner_container {
 	display: inline-block;
     width: 200px;
     background-color: #4099FF;
+    outline: 1px solid rgba(0,0,0,.2);
     height: 100%;
 }
 .portfolio_inner_container {
@@ -42,13 +43,33 @@ body {
     height: 100%;
 }
 
+/*.cashSpanContainer {
+	position: absolute;
+    display: inline-block;
+    width: 40px;
+    height: 18px;
+    right: inherit;
+    left: 363;
+    top: inherit;
+    padding-top: 2px;
+}
+
+ .cashSpan {
+    position: inherit;
+    display: inline-flex;
+    color: black;
+    margin-top: -14;
+    margin-left: -24;
+    text-align: center;
+}*/
+
 .cash_text {
-	display: inline-block;
+	display: inline;
     margin-left: 10px;
 }
 
 #cashVal {
-	display: inline;
+	display: inline-block;
 	margin-left: 2px;
 }
 
@@ -56,6 +77,8 @@ body {
 	display: inline;
 	margin-left: 2px;
 }
+
+/* Portfolio and cash bars */
 
 /* Sidebar styles */
 .sidebar {

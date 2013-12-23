@@ -21,7 +21,6 @@ class LoginUser(handle.Handler):
         username = self.request.get('username')
         username = username.lower()
         password = self.request.get('password')
-        self.write(username + "| " + password)
 
         user = UserDB.getUserByName(username) # if user is in the database. either correct password or not.
         # if correct password do this.
@@ -33,7 +32,4 @@ class LoginUser(handle.Handler):
             else:
                 self.redirect('/')
         else:
-            self.setCookie('username',str(username))
-            UserDB.insertNewUserInDataBase(username,password,'noStocksBoughtYet')
-            redir = '/portfolio/' + username
-            self.redirect(redir)		
+            self.redirect('/register')

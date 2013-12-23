@@ -12,6 +12,7 @@ from SellStocksHandler import sellHandler
 from DataHandler import data
 from Settings import settings
 from GetStockPrice import stockPriceHandler
+from Login import register
 
 #//================================================================================================
 
@@ -25,4 +26,5 @@ app = webapp2.WSGIApplication([('/',login.LoginUser),
                                 ('/getPrice/(.*)', stockPriceHandler.GetPriceHandler),
                                 ('/data', data.Data),
                                 ('/buystocks', buyHandler.BuyHandler),
-                                ('/sellstocks',sellHandler.SellHandler)], debug=True) # Sell / Ticker / Number Of Shares
+                                ('/sellstocks',sellHandler.SellHandler),
+                                ('/register',register.RegisterUser)], debug=True) # Sell / Ticker / Number Of Shares

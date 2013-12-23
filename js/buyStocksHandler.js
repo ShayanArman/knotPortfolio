@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+	var sharePrice;
 	var percent = ((($("#cashVal").text())/100000)*100)*2;
 	$(".cash_inner_container").css("width",percent);
 
@@ -7,18 +7,27 @@ $(document).ready(function() {
 		$('#querystockbutton').attr('disabled', 'disabled');
 		var quoteToSearch = $("#priceSearchInput").val().toUpperCase();
 		$.getJSON("/getPrice/"+quoteToSearch).complete(function(data) {
-			var response = String(data.responseText);
-			if(response == 'Error') {
+			var sharePrice = String(data.responseText);
+			if(sharePrice == 'Error') {
 				alert('There was an error, please try again');
 			} else {
-				$("#retriedStockHolder").show();
-				$("#priceRetrieved").val("Price : $"+response);
+				$("#retrievedStockHolder").show();
+				$("#priceRetrieved").val("Price : $"+sharePrice);
 				$("#priceSearchInput").val(quoteToSearch);
 				$("#tickerInput").val(quoteToSearch);
 			}
 			$('#querystockbutton').removeAttr('disabled');
 		});
 	});
+
+    $('#quantitySharesInput').keyup(function(event) {
+        var numberSharesDog = $(this).val();
+        var pricePerShare = $("#priceRetrieved").val();
+        pricePerShare = parseFloat(pricePerShare.substring(9,pricePerShare.length));
+        if(pricePerShare) {
+        	$('#mirrorInput').val("$ " + (numberSharesDog*pricePerShare));
+        }
+    });
 
 	$("#buystocksbutton").click(function() {
 		$('#buystocksbutton').attr('disabled', 'disabled');
