@@ -2,6 +2,7 @@
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="../js/sellStocksHandler.js"></script>
 	<link rel="stylesheet" href="css/screen.css" media="screen" />
+	<link rel="stylesheet" href="/css/table.css">
 </head>
 {% extends "MainStockPage.html" %}
 {% block content %}
@@ -21,4 +22,23 @@
 						
 		</fieldset>					
 	</form>	
+
+	<table id="rounded-corner">
+		<thead>
+			<tr>
+				<th scope="col" class="rounded-company">Company</th>
+				<th scope="col" class="rounded-q2">Money Made</th>
+				<th scope="col" class="rounded-q3">Percent Gain</th>
+				<th scope="col" class="rounded-q1">Price</th>
+				<th scope="col" class="rounded-q5">Number Of Shares</th>
+	 		</tr>
+		</thead
+		
+		<tfoot>
+		</tfoot>
+
+		<tbody id="tableBody">
+		</tbody>
+	</table>
+
 {% endblock %}
