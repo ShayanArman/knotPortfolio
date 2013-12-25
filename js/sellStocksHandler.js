@@ -1,11 +1,10 @@
 $(document).ready(function() {
-	var globalArray = [];
+	var stockPriceDictionary = {};
 	$.getJSON("/renderUserStocksDB").complete(function(data) {
 		var jstring = data.responseText;
 		if(jstring != 'Empty') {
 			var jarray = JSON.parse(jstring);
 			var color = 'red';
-			globalArray = jarray;
 			for (var i=0;i<jarray.length;i++) { 
 				companyTicker = jarray[i].ticker;
 				numberShares  = jarray[i].numberOfShares;
@@ -17,6 +16,7 @@ $(document).ready(function() {
 				moneyMade 	  = roundToTwo(marketValue - bookValue);
 				percentGain   = roundToTwo(((marketValue/bookValue)-1)*100);
 
+				stockPriceDictionary[companyTicker] = currentPrice;
 
 				if(currentPrice>originalPrice) {
 						color = '#008000';
@@ -28,6 +28,27 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+	$('#numberSharesSell').keyup(function(event) {
+        var numberSharesDog = $('#numberSharesSell').val();
+        rightFormat = (getInt(numberSharesDog) != 'wrong');
+        numberGreaterThanZero = (numberSharesDog > 0);
+        ticker = $("#tickerSell").val().toUpperCase();
+        goodSharePrice = stockPriceDictionary[ticker];
+
+        if(goodSharePrice && rightFormat && numberGreaterThanZero) {
+        	setMirrorInput("$ " + (numberSharesDog*goodSharePrice).toFixed(2));
+        } 
+        else if(!goodSharePrice && rightFormat && numberGreaterThanZero) {
+        	setMirrorInput("Enter A Stock You Own");
+        }
+        else if(!rightFormat && numberSharesDog != "") {
+        	setMirrorInput("Enter A Proper Number");
+        }
+        else if(numberSharesDog == 0) {
+        	setMirrorInput("$ 0.00");	
+        }
+    });
 
 	$("#sellstocksbutton").click(function() {
 		$('#sellstocksbutton').attr('disabled', 'disabled');
@@ -60,6 +81,11 @@ $(document).ready(function() {
 	        x = Number(x);
 	        return x === Math.floor(x) ? x : 'wrong';
 	    }
+	}
+
+	/*  Change the total cost input to represent the total cost or the warning terms  */
+	function setMirrorInput(totalCost) {
+		$('#mirrorInput').val(totalCost);
 	}
 
 	function roundToTwo(value) {
