@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	var stockPriceDictionary = {};
+
 	$.getJSON("/renderUserStocksDB").complete(function(data) {
 		var jstring = data.responseText;
 		if(jstring != 'Empty') {
@@ -59,10 +60,13 @@ $(document).ready(function() {
 				var response = String(data.responseText);
 	
 					if(response == 'moreSharesThanYouHaveError') {
-						alert('You are trying to sell more shares than you own!');
+						
+						if(stockPriceDictionary[tickerSell]) {
+							setMirrorInput('Enter Less Shares');
+						} else {
+							setMirrorInput('Enter A Stock You Own');
+						}
 					} else {
-						var alertString = "You made " + response + " dollars! This will be added to your cash balance";
-						alert(alertString);
 						window.location.href = "/";
 					}
 					$('#sellstocksbutton').removeAttr('disabled');
