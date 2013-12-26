@@ -6,6 +6,7 @@ $(document).ready(function() {
 	/* Search stock price button was pressed! */
 	$("#querystockbutton").click(function() {
 		$('#querystockbutton').attr('disabled', 'disabled');
+
 		var numberSharesInput = $("#quantitySharesInput").val();
 		var quoteToSearch = $("#priceSearchInput").val().toUpperCase();
 		if(quoteToSearch != "") {
@@ -31,12 +32,13 @@ $(document).ready(function() {
         else if(!goodSharePrice && rightFormat && numberGreaterThanZero) {
         	var input = $("#priceSearchInput").val().toUpperCase();
         	if(input != ""){
-        		queryPrice(input);
-        		setTimeout(function(){
-        			setMirrorInput("$ " + (numberSharesDog*sharePrice).toFixed(2));
-        		},1000);
+        		enterStockSymbolAndUpdatePrice(input,numberSharesDog);
         	} else {
-        		setMirrorInput("Enter the Stock Symbol");
+        		setMirrorInput("Enter A Stock Symbol");
+        		setTimeout(function(){
+        			var input = $("#priceSearchInput").val().toUpperCase();
+        			enterStockSymbolAndUpdatePrice(input,numberSharesDog);
+        		},3000);
         	}
         }
         else if(!rightFormat && numberSharesDog != "") {
@@ -58,10 +60,10 @@ $(document).ready(function() {
 				var response = String(loadedValues);
 	
 					if(response == 'Error') {
-						alert('There was an error, please try again');
+						setMirrorInput('Error, Please Try Again');
 					} 
 					else if(response == 'NotEnoughCash') {
-						alert('Not enough cash available for transaction');
+						setMirrorInput('Not Enough Cash Available');
 					}
 					else {
 						window.location.href = "/";
@@ -69,12 +71,24 @@ $(document).ready(function() {
 					$('#buystocksbutton').removeAttr('disabled');
 			});
 		} else {
-			alert('Please enter a proper number');
+			setMirrorInput('Enter A Proper Number');
 			$('#buystocksbutton').removeAttr('disabled');
 		}
 	
 	});
 
+	function enterStockSymbolAndUpdatePrice(input,numberSharesDog) {
+    	if(input != "" && sharePrice == 0){
+    		queryPrice(input);
+    		setTimeout(function(){
+    			if(sharePrice != 0) {
+    				setMirrorInput("$ " + (numberSharesDog*sharePrice).toFixed(2));
+    			} else {
+    				setMirrorInput("Query A Proper Stock Symbol");		
+    			}
+    		},1500);
+    	}
+	}
 	/*  Change the total cost input to represent the total cost or the warning terms  */
 	function setMirrorInput(totalCost) {
 		$('#mirrorInput').val(totalCost);
@@ -83,9 +97,10 @@ $(document).ready(function() {
 	/* Hit the database to get the stock price. Update the price in the retrieved field. */
 	function queryPrice(quoteToSearch) {
 		$.getJSON("/getPrice/"+quoteToSearch).complete(function(data) {
+
 			sharePrice = String(data.responseText);
 			if(sharePrice == 'Error') {
-				alert('There was an error, please try again');
+				sharePrice = 0;
 			} else {
 				$("#retrievedStockHolder").show();
 				$("#priceRetrieved").val("Price : $"+sharePrice);
