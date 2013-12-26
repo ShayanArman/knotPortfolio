@@ -42,6 +42,7 @@ $(document).ready(function() {
         } 
         else if(!goodSharePrice && rightFormat && numberGreaterThanZero) {
         	setMirrorInput("Enter A Stock You Own");
+        	setTimeout(function() { enterStockSymbolAndUpdatePrice();},3500);
         }
         else if(!rightFormat && numberSharesDog != "") {
         	setMirrorInput("Enter A Proper Number");
@@ -53,15 +54,14 @@ $(document).ready(function() {
 
 	$("#sellstocksbutton").click(function() {
 		$('#sellstocksbutton').attr('disabled', 'disabled');
-		var ticker = $("#tickerSell").val();
+		var ticker = $("#tickerSell").val().toUpperCase();
 		var numberOfShares = $("#numberSharesSell").val();
 		if(getInt(numberOfShares) != 'wrong' && numberOfShares > 0) {
 			$.getJSON("/sell/"+ticker.toUpperCase()+"/"+numberOfShares).complete(function(data) {
 				var response = String(data.responseText);
 	
 					if(response == 'moreSharesThanYouHaveError') {
-						
-						if(stockPriceDictionary[tickerSell]) {
+						if(stockPriceDictionary[ticker]) {
 							setMirrorInput('Enter Less Shares');
 						} else {
 							setMirrorInput('Enter A Stock You Own');
@@ -85,6 +85,19 @@ $(document).ready(function() {
 	        x = Number(x);
 	        return x === Math.floor(x) ? x : 'wrong';
 	    }
+	}
+
+	function enterStockSymbolAndUpdatePrice() {
+		var numberSharesDog = $('#numberSharesSell').val();
+        rightFormat = (getInt(numberSharesDog) != 'wrong');
+        numberGreaterThanZero = (numberSharesDog > 0);
+        ticker = $("#tickerSell").val().toUpperCase();
+        goodSharePrice = stockPriceDictionary[ticker];
+    	
+
+    	if(goodSharePrice && rightFormat && numberGreaterThanZero) {
+        	setMirrorInput("$ " + (numberSharesDog*goodSharePrice).toFixed(2));
+        } 
 	}
 
 	/*  Change the total cost input to represent the total cost or the warning terms  */

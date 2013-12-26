@@ -38,7 +38,7 @@ $(document).ready(function() {
         		setTimeout(function(){
         			var input = $("#priceSearchInput").val().toUpperCase();
         			enterStockSymbolAndUpdatePrice(input,numberSharesDog);
-        		},3000);
+        		},4000);
         	}
         }
         else if(!rightFormat && numberSharesDog != "") {
